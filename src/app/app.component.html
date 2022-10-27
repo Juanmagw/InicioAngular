@@ -47,31 +47,7 @@
 !--Navbar2-->
 
 <!--Navbar3-->
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLinkactive="active" routerLink="">Notas</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLinkactive="active" routerLink="/">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkactive="active" routerLink="/new">Nueva nota</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkactive="active" routerLink="/about">Acerca de</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<app-navbar></app-navbar>
 <!--Navbar3-->
 
-
-<app-note [note]="{title:'test',description:'test'}"(editNote)="this.editingNote($event)"(removeNote)="this.removingNote($event)"></app-note>
-<app-note [note]="{id:2,title:'hola',description:'mundo'}"(editNote)="this.editingNote($event)"(removeNote)="this.removingNote($event)"></app-note>
-<app-button [clase]="'btn btn-danger'"[texto]="'Alerta'"(action)="alerta()"></app-button>
 <router-outlet></router-outlet>
