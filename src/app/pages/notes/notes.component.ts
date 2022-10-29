@@ -2,52 +2,44 @@ import { Component, ElementRef, OnInit, ViewChild, NgModule } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from 'src/app/directives/highlight.directive';
-import { SharedModule } from '../../SharedModule';
+import { SharedModule } from '../../components/SharedModule';
 import { INote } from 'src/app/model/INote';
 import { NotesService } from 'src/app/services/notes.service';
+import { FormNoteComponent } from 'src/app/components/form-note/form-note.component';
 
 
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule, HighlightDirective],
+  imports: [CommonModule, FormsModule, SharedModule, HighlightDirective, FormNoteComponent],
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
   @ViewChild('colorpicker') cp!: ElementRef;
 
-  public color:string = '#fff';
-  public page = 'Inicio';
+  public _editingNote!: INote;
 
-
-  public notes:INote[] = [
-    {title:'Nota1',description:"Hola Mundo"},
-    {title:'Nota2',description:"Hello World"},
-  ];
-
-  constructor(public notesS:NotesService) { }
+  constructor(public notesS: NotesService) { }
 
   ngOnInit(): void {
   }
 
-  refresh(){
-    location.reload();
-  }
-  cambiaCorlor($event:any){
-   this.color=$event.target.value;
-  }
-
-  public removingNote($event:INote){
+  public removingNote($event: INote) {
     console.log("Elminando Nota");
-    console.log($event);
+    this.notesS.removeNote($event.id)
   }
-  public editingNote($event:INote){
+  public editingNote($event: INote) {
     console.log("Editando Nota");
-    console.log($event);
+    this._editingNote = $event;
+    console.log(this._editingNote)
+    document.getElementById("launchModal")?.click();
   }
-  trackByNotes(index:number,item:INote){
+  trackByNotes(index: number, item: INote) {
     return item.id;
   }
-
+  updateNote($event: any) {
+    this.notesS.updateNote($event); //<-new
+    document.getElementById("closeModal")?.click();
+  }
 }

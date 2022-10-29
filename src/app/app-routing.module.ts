@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewComponent } from './components/navbar/new/new.component';
-import { Error404Component } from './components/pages/error404/error404.component';
-import { LoginComponent } from './components/pages/login/login.component';
-import { NotesComponent } from './components/pages/notes/notes.component';
+import { Error404Component } from './pages/error404/error404.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NotesComponent } from './pages/notes/notes.component';
 import { LoginGuard } from './guards/login.guard';
+import { NewComponent } from './pages/new/new.component';
 
 const routes: Routes = [
   {path:'home', component:NotesComponent,
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'new', component:NewComponent,
   canActivate:[LoginGuard]},
   {path:'about', loadComponent:
-  ()=> import('./components/pages/about/about.component').then(c => c.AboutComponent)},
+  ()=> import('./pages/about/about.component').then(c => c.AboutComponent)},
   {path:'', redirectTo:'/home', pathMatch:'full'},
   {path:'login', component:LoginComponent,
   canActivate:[LoginGuard]},
