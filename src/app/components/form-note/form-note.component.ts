@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { INote } from 'src/app/model/INote';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-note',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, /*TranslateModule*/],
   templateUrl: './form-note.component.html',
   styleUrls: ['./form-note.component.css']
 })

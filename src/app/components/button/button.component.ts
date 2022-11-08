@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, /*TranslateModule*/],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.css']
 })
@@ -15,7 +15,10 @@ export class ButtonComponent implements OnInit {
   @Input('texto') texto:string = 'Botón';
   @Output() action = new EventEmitter();
 
-  constructor() { }
+  /*constructor(private traslateS:TranslateService) {
+    traslateS.setDefaultLang('es');
+    traslateS.use('es');
+  }*/
 
   ngOnInit(): void {
   }

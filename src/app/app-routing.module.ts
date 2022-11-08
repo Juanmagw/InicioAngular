@@ -11,8 +11,7 @@ const routes: Routes = [
   canActivate:[LoginGuard]},
   {path:'new', component:NewComponent,
   canActivate:[LoginGuard]},
-  {path:'about', loadComponent:
-  ()=> import('./pages/about/about.component').then(c => c.AboutComponent)},
+  {path:'about', loadComponent: ()=> import('./pages/about/about.component').then(c => c.AboutComponent)},
   {path:'', redirectTo:'/home', pathMatch:'full'},
   {path:'login', component:LoginComponent,
   canActivate:[LoginGuard]},

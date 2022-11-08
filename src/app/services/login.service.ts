@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
 import { Router } from '@angular/router';
+import { LocalStorageService } from './local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,12 +11,16 @@ export class LoginService {
   user!: SocialUser;
   loggedIn!: boolean;
   originalPath!: string;
+
   constructor(private authService: SocialAuthService,
-    private router: Router) {
+    private router: Router, private localS: LocalStorageService) {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
       if (this.loggedIn) {
+        this.localS.remove('user');
+        this.localS.set('user', user);
+        // this.refreshToken();
         if (this.originalPath) {
           this.router.navigate([this.originalPath]);
           this.originalPath = '';
@@ -30,8 +35,7 @@ export class LoginService {
     return this.loggedIn;
   }
   async refreshToken(): Promise<void> {
-    return
-    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+    return this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
   /*
   async signInWithGoogle():Promise<SocialUser> {

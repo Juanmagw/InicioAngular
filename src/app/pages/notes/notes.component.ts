@@ -6,16 +6,17 @@ import { SharedModule } from '../../components/SharedModule';
 import { INote } from 'src/app/model/INote';
 import { NotesService } from 'src/app/services/notes.service';
 import { FormNoteComponent } from 'src/app/components/form-note/form-note.component';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule, HighlightDirective, FormNoteComponent],
+  imports: [CommonModule, FormsModule, SharedModule, HighlightDirective, FormNoteComponent, /*TranslateModule*/],
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
+  
   @ViewChild('colorpicker') cp!: ElementRef;
 
   public _editingNote!: INote;

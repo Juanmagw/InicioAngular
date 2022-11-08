@@ -5,3 +5,7 @@ asl-google-signin-button div{
     justify-content: center;
     text-align:center;
 }
+
+#credential_picker_container{
+    display: none;
+}

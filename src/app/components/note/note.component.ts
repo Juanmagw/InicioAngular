@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { INote } from '../../model/INote';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-note',

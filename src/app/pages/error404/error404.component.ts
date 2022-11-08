@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-error404',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, /*TranslateModule*/],
   templateUrl: './error404.component.html',
   styleUrls: ['./error404.component.css']
 })
